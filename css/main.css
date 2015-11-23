@@ -1,0 +1,55 @@
+html{
+  background-color: #f8f8f8;
+  font-family: 'Roboto';
+}
+#container{
+  width: 375px;
+  height: 667px;
+  margin: auto;
+  margin-top: 15px;
+  background-color: #FFF;
+  box-shadow: 0px 0px 3px 0 rgba(0,0,0,0.25)}
+.navbar{
+  height: 64px;
+  background-color: #2196F3;
+}
+.statusbar{
+  height: 20px;
+  background-color: #1976D2;
+}
+.nav{
+  color: #FFF;
+  font-size: 20px;
+  line-height: 44px;
+  padding: 0px 16px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
+}
+.app {
+  padding: 0 16px;
+}
+.app h2{
+  height: 48px;
+  line-height: 48px;
+  margin: 0;
+  font-size: 16px;
+  color: #2196F3;
+  font-weight: normal;
+}
+.app ul{
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+.app ul li{
+  height: 48px;
+  line-height: 48px;
+}
+.app ul li button{
+  height: 24px;
+  width: 24px;
+  position: relative;
+  top: -5px;
+}
+.app .listText{
+  padding-left: 28px;
+}
