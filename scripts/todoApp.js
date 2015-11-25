@@ -1,3 +1,6 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
 var Todo = React.createClass({
   render: function() {
     return ( <li><button onClick={this.props.onClick} value={this.props.index}></button><span className="listText">{this.props.text}</span></li> );

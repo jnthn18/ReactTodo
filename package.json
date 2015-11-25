@@ -1,0 +1,25 @@
+{
+  "name": "react-todo",
+  "version": "1.0.0",
+  "description": "React ToDo App",
+  "main": "scripts/todoApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnthn18/ReactTodo.git"
+  },
+  "author": "Jon More",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jnthn18/ReactTodo/issues"
+  },
+  "homepage": "https://github.com/jnthn18/ReactTodo#readme",
+  "dependencies": {
+    "babel-preset-react": "^6.1.18",
+    "babelify": "^7.2.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
+  }
+}
