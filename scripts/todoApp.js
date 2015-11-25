@@ -1,6 +1,12 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+require('velocity-animate');
+require('velocity-animate/velocity.ui');
+
+var VelocityComponent = require('../velocity-component');
+var VelocityTransitionGroup = require('../velocity-transition-group');
+
 var Todo = React.createClass({
   render: function() {
     return ( <li><button onClick={this.props.onClick} value={this.props.index}></button><span className="listText">{this.props.text}</span></li> );
@@ -12,6 +18,7 @@ var TodoList = React.createClass({
     var category = this.props.category;
     return (
       <ul>
+        <VelocityTransitionGroup runOnMount={true} enter={{animation: "slideDown"}} leave={{animation: "slideUp"}}>
         {this.props.data.map(function(todo, todoIndex) {
             if (category == todo.category) {
               return ( <Todo onClick={this.props.deleteTask} key={todoIndex} index={todoIndex} text={todo.text} />) ;
@@ -19,6 +26,7 @@ var TodoList = React.createClass({
             //Map accepts 'this' as a context parameter 
           }, this)
         }
+        </VelocityTransitionGroup>
       </ul>
     )
   }
