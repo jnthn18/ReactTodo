@@ -26570,6 +26570,11 @@ var TodoForm = React.createClass({
           'option',
           { value: 'Tomorrow' },
           'Tomorrow'
+        ),
+        React.createElement(
+          'option',
+          { value: 'Someday' },
+          'Someday'
         )
       ),
       React.createElement('input', { type: 'text', placeholder: 'Do what?', ref: 'text' }),

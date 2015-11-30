@@ -50,6 +50,7 @@ var TodoForm = React.createClass({
         <select defaultValue="Tomorrow" ref="category">
           <option value="Today">Today</option>
           <option value="Tomorrow">Tomorrow</option>
+          <option value="Someday">Someday</option>
         </select>
         <input type="text" placeholder="Do what?" ref="text" />
         <input type="submit" value="Create" />
