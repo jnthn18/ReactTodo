@@ -54,3 +54,7 @@ html{
 .app .listText{
   padding-left: 28px;
 }
+.todoForm{
+  height: 48px;
+  line-height: 48px;
+}

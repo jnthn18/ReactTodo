@@ -91,13 +91,13 @@ var TodoApp = React.createClass({
       <div>
         <TodoHeader />
         <div className="app">
+          <TodoForm onTodoSubmit={this.handleTodoSubmit} />
           <h2>Today</h2>
           <TodoList category="Today" data={this.state.data} deleteTask={this.deleteTask} />
           <h2>Tomorrow</h2>
           <TodoList category="Tomorrow" data={this.state.data} deleteTask={this.deleteTask} />
           <h2>Someday</h2>
           <TodoList category="Someday" data={this.state.data} deleteTask={this.deleteTask} />
-          <TodoForm onTodoSubmit={this.handleTodoSubmit} />
         </div>
       </div>
     );

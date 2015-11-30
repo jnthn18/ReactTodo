@@ -26626,6 +26626,7 @@ var TodoApp = React.createClass({
       React.createElement(
         'div',
         { className: 'app' },
+        React.createElement(TodoForm, { onTodoSubmit: this.handleTodoSubmit }),
         React.createElement(
           'h2',
           null,
@@ -26643,8 +26644,7 @@ var TodoApp = React.createClass({
           null,
           'Someday'
         ),
-        React.createElement(TodoList, { category: 'Someday', data: this.state.data, deleteTask: this.deleteTask }),
-        React.createElement(TodoForm, { onTodoSubmit: this.handleTodoSubmit })
+        React.createElement(TodoList, { category: 'Someday', data: this.state.data, deleteTask: this.deleteTask })
       )
     );
   }
