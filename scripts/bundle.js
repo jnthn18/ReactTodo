@@ -26528,16 +26528,12 @@ var TodoList = React.createClass({
     return React.createElement(
       'ul',
       null,
-      React.createElement(
-        VelocityTransitionGroup,
-        { runOnMount: true, enter: { animation: "slideDown" }, leave: { animation: "slideUp" } },
-        this.props.data.map(function (todo, todoIndex) {
-          if (category == todo.category) {
-            return React.createElement(Todo, { onClick: this.props.deleteTask, key: todoIndex, index: todoIndex, text: todo.text });
-          }
-          //Map accepts 'this' as a context parameter
-        }, this)
-      )
+      this.props.data.map(function (todo, todoIndex) {
+        if (category == todo.category) {
+          return React.createElement(Todo, { onClick: this.props.deleteTask, key: todoIndex, index: todoIndex, text: todo.text });
+        }
+        //Map accepts 'this' as a context parameter
+      }, this)
     );
   }
 });
@@ -26612,6 +26608,7 @@ var TodoApp = React.createClass({
   },
   deleteTask: function (task) {
     var taskIndex = parseInt(task.target.value);
+    console.log(taskIndex);
     var tasks = this.state.data;
     var removedTasks = tasks.splice(taskIndex, 1);
     this.setState({ data: tasks });

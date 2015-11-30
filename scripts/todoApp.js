@@ -18,7 +18,6 @@ var TodoList = React.createClass({
     var category = this.props.category;
     return (
       <ul>
-        <VelocityTransitionGroup runOnMount={true} enter={{animation: "slideDown"}} leave={{animation: "slideUp"}}>
         {this.props.data.map(function(todo, todoIndex) {
             if (category == todo.category) {
               return ( <Todo onClick={this.props.deleteTask} key={todoIndex} index={todoIndex} text={todo.text} />) ;
@@ -26,7 +25,6 @@ var TodoList = React.createClass({
             //Map accepts 'this' as a context parameter 
           }, this)
         }
-        </VelocityTransitionGroup>
       </ul>
     )
   }
@@ -82,6 +80,7 @@ var TodoApp = React.createClass({
   },
   deleteTask: function(task) {
     var taskIndex = parseInt(task.target.value);
+    console.log(taskIndex);
     var tasks = this.state.data;
     var removedTasks = tasks.splice(taskIndex, 1);
     this.setState({data: tasks});
