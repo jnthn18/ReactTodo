@@ -13,20 +13,41 @@ html{
 .navbar{
   height: 64px;
   background-color: #2196F3;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
 }
 .statusbar{
   height: 20px;
   background-color: #1976D2;
 }
-.nav{
+.nav, .menu{
   color: #FFF;
   font-size: 20px;
   line-height: 44px;
   padding: 0px 16px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
+}
+.menu{
+  position: relative;
+  left: 171px;
+}
+.menu button{
+  color: #FFF;
+  background-color: #2196F3;
+  border: none;
+  font-size: 14px;
 }
 .app {
   padding: 0 16px;
+  height: 603px;
+  overflow: hidden;
+}
+.listContainer{
+  z-index: 2;
+}
+.doneContainer{
+  z-index: 1;
+  position: relative;
+  top: -287px;
+  opacity: 0;
 }
 .app h2{
   height: 48px;

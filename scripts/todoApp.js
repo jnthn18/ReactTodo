@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-require('velocity-animate');
-require('velocity-animate/velocity.ui');
+var $ = require('jquery');
+// require('velocity-animate');
+// require('velocity-animate/velocity.ui');
 
 var VelocityComponent = require('../velocity-component');
 var VelocityTransitionGroup = require('../velocity-transition-group');
@@ -40,7 +40,7 @@ var TodoForm = React.createClass({
     }
     this.props.onTodoSubmit({category: category, text: text});
     //Send data to server (I think local storage would be the same)
-    this.refs.category.value = 'Tomorrow';
+    this.refs.category.value = 'Today';
     this.refs.text.value = '';
     return;
   },
@@ -64,7 +64,8 @@ var TodoHeader = React.createClass({
     return (
       <div className="navbar" >
         <div className="statusbar"></div>
-        <div className="nav">ToDo App</div>
+        <span className="nav">ToDo App</span>
+        <span className="menu"><button onClick={this.props.changeScreen}>Menu</button></span>
       </div>
     )
   }
@@ -94,20 +95,33 @@ var TodoApp = React.createClass({
     var newDone = completedTasks.concat([completedTask[0]]);
     this.setState({done: newDone});
   },
+  changeScreen: function(){
+    if($(".doneContainer").css("opacity") == 0){
+      $(".listContainer").css("opacity", "0");
+      $(".doneContainer").css("opacity", "1");
+    } else {
+      $(".doneContainer").css("opacity", "0");
+      $(".listContainer").css("opacity", "1");
+    }
+  },
   render: function(){
     return (
       <div>
-        <TodoHeader />
+        <TodoHeader changeScreen={this.changeScreen} />
         <div className="app">
-          <TodoForm onTodoSubmit={this.handleTodoSubmit} />
-          <h2>Today</h2>
-          <TodoList category="Today" data={this.state.data} completeTask={this.completeTask} />
-          <h2>Tomorrow</h2>
-          <TodoList category="Tomorrow" data={this.state.data} completeTask={this.completeTask} />
-          <h2>Someday</h2>
-          <TodoList category="Someday" data={this.state.data} completeTask={this.completeTask} />
-          <h2>Completed</h2>
-          <TodoList category="Completed" data={this.state.done} />
+          <div className="listContainer">
+            <TodoForm onTodoSubmit={this.handleTodoSubmit} />
+            <h2>Today</h2>
+            <TodoList category="Today" data={this.state.data} completeTask={this.completeTask} />
+            <h2>Tomorrow</h2>
+            <TodoList category="Tomorrow" data={this.state.data} completeTask={this.completeTask} />
+            <h2>Someday</h2>
+            <TodoList category="Someday" data={this.state.data} completeTask={this.completeTask} />
+          </div>
+          <div className="doneContainer">
+            <h2>Completed</h2>
+            <TodoList category="Completed" data={this.state.done.reverse()} completeTask={this.completeTask} />
+          </div>
         </div>
       </div>
     );
