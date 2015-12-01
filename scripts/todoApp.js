@@ -20,7 +20,7 @@ var TodoList = React.createClass({
       <ul>
         {this.props.data.map(function(todo, todoIndex) {
             if (category == todo.category) {
-              return ( <Todo onClick={this.props.deleteTask} key={todoIndex} index={todoIndex} text={todo.text} />) ;
+              return ( <Todo onClick={this.props.completeTask} key={todoIndex} index={todoIndex} text={todo.text} />) ;
             }
             //Map accepts 'this' as a context parameter 
           }, this)
@@ -47,7 +47,7 @@ var TodoForm = React.createClass({
   render: function() {
     return (
       <form className="todoForm" onSubmit={this.handleSubmit}>
-        <select defaultValue="Tomorrow" ref="category">
+        <select ref="category">
           <option value="Today">Today</option>
           <option value="Tomorrow">Tomorrow</option>
           <option value="Someday">Someday</option>
@@ -72,7 +72,7 @@ var TodoHeader = React.createClass({
 
 var TodoApp = React.createClass({
   getInitialState: function() {
-    return {data: [{category: "Today", text: "a"},{category: "Tomorrow", text: "b"},{category: "Today", text: "c"}]};
+    return {data: [{category: "Today", text: "a"},{category: "Tomorrow", text: "b"},{category: "Today", text: "c"}], done: []};
   },
   handleTodoSubmit: function(task) {
     var tasks = this.state.data;
@@ -81,10 +81,18 @@ var TodoApp = React.createClass({
   },
   deleteTask: function(task) {
     var taskIndex = parseInt(task.target.value);
-    console.log(taskIndex);
     var tasks = this.state.data;
     var removedTasks = tasks.splice(taskIndex, 1);
     this.setState({data: tasks});
+  },
+  completeTask: function(task) {
+    var taskIndex = parseInt(task.target.value);
+    this.state.data[taskIndex].category = "Completed";
+    var completedTasks = this.state.done;
+    var tasks = this.state.data;
+    var completedTask = tasks.splice(taskIndex, 1);
+    var newDone = completedTasks.concat([completedTask[0]]);
+    this.setState({done: newDone});
   },
   render: function(){
     return (
@@ -93,11 +101,13 @@ var TodoApp = React.createClass({
         <div className="app">
           <TodoForm onTodoSubmit={this.handleTodoSubmit} />
           <h2>Today</h2>
-          <TodoList category="Today" data={this.state.data} deleteTask={this.deleteTask} />
+          <TodoList category="Today" data={this.state.data} completeTask={this.completeTask} />
           <h2>Tomorrow</h2>
-          <TodoList category="Tomorrow" data={this.state.data} deleteTask={this.deleteTask} />
+          <TodoList category="Tomorrow" data={this.state.data} completeTask={this.completeTask} />
           <h2>Someday</h2>
-          <TodoList category="Someday" data={this.state.data} deleteTask={this.deleteTask} />
+          <TodoList category="Someday" data={this.state.data} completeTask={this.completeTask} />
+          <h2>Completed</h2>
+          <TodoList category="Completed" data={this.state.done} />
         </div>
       </div>
     );

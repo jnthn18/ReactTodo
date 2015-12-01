@@ -26530,7 +26530,7 @@ var TodoList = React.createClass({
       null,
       this.props.data.map(function (todo, todoIndex) {
         if (category == todo.category) {
-          return React.createElement(Todo, { onClick: this.props.deleteTask, key: todoIndex, index: todoIndex, text: todo.text });
+          return React.createElement(Todo, { onClick: this.props.completeTask, key: todoIndex, index: todoIndex, text: todo.text });
         }
         //Map accepts 'this' as a context parameter
       }, this)
@@ -26604,7 +26604,7 @@ var TodoApp = React.createClass({
   displayName: 'TodoApp',
 
   getInitialState: function () {
-    return { data: [{ category: "Today", text: "a" }, { category: "Tomorrow", text: "b" }, { category: "Today", text: "c" }] };
+    return { data: [{ category: "Today", text: "a" }, { category: "Tomorrow", text: "b" }, { category: "Today", text: "c" }], done: [] };
   },
   handleTodoSubmit: function (task) {
     var tasks = this.state.data;
@@ -26613,10 +26613,18 @@ var TodoApp = React.createClass({
   },
   deleteTask: function (task) {
     var taskIndex = parseInt(task.target.value);
-    console.log(taskIndex);
     var tasks = this.state.data;
     var removedTasks = tasks.splice(taskIndex, 1);
     this.setState({ data: tasks });
+  },
+  completeTask: function (task) {
+    var taskIndex = parseInt(task.target.value);
+    this.state.data[taskIndex].category = "Completed";
+    var completedTasks = this.state.done;
+    var tasks = this.state.data;
+    var completedTask = tasks.splice(taskIndex, 1);
+    var newDone = completedTasks.concat([completedTask[0]]);
+    this.setState({ done: newDone });
   },
   render: function () {
     return React.createElement(
@@ -26632,19 +26640,25 @@ var TodoApp = React.createClass({
           null,
           'Today'
         ),
-        React.createElement(TodoList, { category: 'Today', data: this.state.data, deleteTask: this.deleteTask }),
+        React.createElement(TodoList, { category: 'Today', data: this.state.data, completeTask: this.completeTask }),
         React.createElement(
           'h2',
           null,
           'Tomorrow'
         ),
-        React.createElement(TodoList, { category: 'Tomorrow', data: this.state.data, deleteTask: this.deleteTask }),
+        React.createElement(TodoList, { category: 'Tomorrow', data: this.state.data, completeTask: this.completeTask }),
         React.createElement(
           'h2',
           null,
           'Someday'
         ),
-        React.createElement(TodoList, { category: 'Someday', data: this.state.data, deleteTask: this.deleteTask })
+        React.createElement(TodoList, { category: 'Someday', data: this.state.data, completeTask: this.completeTask }),
+        React.createElement(
+          'h2',
+          null,
+          'Completed'
+        ),
+        React.createElement(TodoList, { category: 'Completed', data: this.state.done })
       )
     );
   }
