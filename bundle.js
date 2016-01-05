@@ -60,6 +60,10 @@
 	    var taskIndex = parseInt(e.target.value, 10);
 	    this.props.onDeleteTask(taskIndex);
 	  },
+	  handleComplete: function handleComplete(e) {
+	    var taskIndex = parseInt(e.target.value, 10);
+	    this.props.onCompleteTask(taskIndex);
+	  },
 	  render: function render() {
 	    var _this = this;
 
@@ -67,6 +71,12 @@
 	      return React.createElement(
 	        'li',
 	        null,
+	        React.createElement(
+	          'button',
+	          { onClick: this.Complete },
+	          'Complete'
+	        ),
+	        ' ',
 	        task,
 	        ' ',
 	        React.createElement(
@@ -83,6 +93,12 @@
 	        return React.createElement(
 	          'li',
 	          { key: taskIndex },
+	          React.createElement(
+	            'button',
+	            { onClick: _this.handleComplete, value: taskIndex },
+	            'Complete'
+	          ),
+	          ' ',
 	          task,
 	          ' ',
 	          React.createElement(
@@ -90,6 +106,24 @@
 	            { onClick: _this.handleDelete, value: taskIndex },
 	            'Delete'
 	          )
+	        );
+	      })
+	    );
+	  }
+	});
+
+	var CompletedList = React.createClass({
+	  displayName: 'CompletedList',
+
+	  render: function render() {
+	    return React.createElement(
+	      'ul',
+	      null,
+	      this.props.completed.reverse().map(function (task, taskIndex) {
+	        return React.createElement(
+	          'li',
+	          { key: taskIndex },
+	          task
 	        );
 	      })
 	    );
@@ -133,7 +167,7 @@
 	  displayName: 'App',
 
 	  getInitialState: function getInitialState() {
-	    return { data: [] };
+	    return { data: [], completed: [] };
 	  },
 	  handleTaskSubmit: function handleTaskSubmit(task) {
 	    var nextTask = this.state.data.concat([task]);
@@ -146,6 +180,12 @@
 	    console.log('Removed Task: ' + removedTasks);
 	    this.setState({ data: tasks });
 	  },
+	  completeTask: function completeTask(task) {
+	    var tasks = this.state.data;
+	    var completedTask = tasks.splice(task, 1);
+	    console.log('Finished Task: ' + completedTask);
+	    this.setState({ data: tasks, completed: this.state.completed.concat([completedTask]) });
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      'div',
@@ -155,8 +195,14 @@
 	        null,
 	        'TODO LIST'
 	      ),
-	      React.createElement(TodoList, { data: this.state.data, onDeleteTask: this.deleteTask }),
-	      React.createElement(TodoForm, { onTaskSubmit: this.handleTaskSubmit })
+	      React.createElement(TodoList, { data: this.state.data, onCompleteTask: this.completeTask, onDeleteTask: this.deleteTask }),
+	      React.createElement(TodoForm, { onTaskSubmit: this.handleTaskSubmit }),
+	      React.createElement(
+	        'h2',
+	        null,
+	        'Completed Tasks'
+	      ),
+	      React.createElement(CompletedList, { completed: this.state.completed })
 	    );
 	  }
 	});

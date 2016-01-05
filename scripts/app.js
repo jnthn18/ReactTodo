@@ -10,14 +10,30 @@ var TodoList = React.createClass({
     var taskIndex = parseInt(e.target.value, 10);
     this.props.onDeleteTask(taskIndex);
   },
+  handleComplete: function(e){
+    var taskIndex = parseInt(e.target.value, 10);
+    this.props.onCompleteTask(taskIndex);
+  },
   render: function() {
     var createTask = function(task, taskIndex) {
-      return <li>{task} <button onClick={this.Delete} value={taskIndex}>Delete</button></li>;
+      return <li><button onClick={this.Complete}>Complete</button> {task} <button onClick={this.Delete} value={taskIndex}>Delete</button></li>;
     };
     return (
       <ul>
         {this.props.data.map((task, taskIndex) =>
-          <li key={taskIndex}>{task} <button onClick={this.handleDelete} value={taskIndex}>Delete</button></li>
+          <li key={taskIndex}><button onClick={this.handleComplete} value={taskIndex}>Complete</button> {task} <button onClick={this.handleDelete} value={taskIndex}>Delete</button></li>
+        )}
+      </ul>
+    );
+  }
+});
+
+var CompletedList = React.createClass({
+  render: function() {
+    return (
+        <ul>
+        {this.props.completed.reverse().map((task, taskIndex) =>
+          <li key={taskIndex}>{task}</li>
         )}
       </ul>
     );
@@ -53,7 +69,7 @@ var TodoForm = React.createClass({
 
 var App = React.createClass({
   getInitialState: function() {
-    return {data: []};
+    return {data: [], completed: []};
   },
   handleTaskSubmit: function(task) {
     var nextTask = this.state.data.concat([task]);
@@ -66,12 +82,20 @@ var App = React.createClass({
     console.log('Removed Task: '+removedTasks);
     this.setState({data: tasks});
   },
+  completeTask: function(task) {
+    var tasks = this.state.data;
+    var completedTask = tasks.splice(task, 1);
+    console.log('Finished Task: '+completedTask);
+    this.setState({data: tasks, completed: this.state.completed.concat([completedTask]) });
+  },
   render: function() {
     return (
       <div>
         <h1>TODO LIST</h1>
-        <TodoList data={this.state.data} onDeleteTask={this.deleteTask} />
+        <TodoList data={this.state.data} onCompleteTask={this.completeTask} onDeleteTask={this.deleteTask} />
         <TodoForm  onTaskSubmit={this.handleTaskSubmit} />
+        <h2>Completed Tasks</h2>
+        <CompletedList completed={this.state.completed} />
       </div>
     );
   }
