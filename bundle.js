@@ -71,19 +71,11 @@
 	      return React.createElement(
 	        'li',
 	        null,
-	        React.createElement(
-	          'button',
-	          { onClick: this.Complete },
-	          'Complete'
-	        ),
+	        React.createElement('i', { className: 'fa fa-check', onClick: this.handleComplete, value: taskIndex }),
 	        ' ',
 	        task,
 	        ' ',
-	        React.createElement(
-	          'button',
-	          { onClick: this.Delete, value: taskIndex },
-	          'Delete'
-	        )
+	        React.createElement('i', { className: 'fa fa-times', onClick: this.handleDelete, value: taskIndex })
 	      );
 	    };
 	    return React.createElement(
@@ -93,19 +85,11 @@
 	        return React.createElement(
 	          'li',
 	          { key: taskIndex },
-	          React.createElement(
-	            'button',
-	            { onClick: _this.handleComplete, value: taskIndex },
-	            'Complete'
-	          ),
+	          React.createElement('i', { className: 'fa fa-check', onClick: _this.handleComplete, value: taskIndex }),
 	          ' ',
 	          task,
 	          ' ',
-	          React.createElement(
-	            'button',
-	            { onClick: _this.handleDelete, value: taskIndex },
-	            'Delete'
-	          )
+	          React.createElement('i', { className: 'fa fa-times', onClick: _this.handleDelete, value: taskIndex })
 	        );
 	      })
 	    );
@@ -244,7 +228,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto'; }\n", ""]);
+	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto'; }\n\nul {\n  list-style-type: none;\n  padding-left: 0; }\n", ""]);
 
 	// exports
 
