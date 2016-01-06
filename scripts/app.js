@@ -1,4 +1,5 @@
 require('./../stylesheets/global.sass');
+require('./../stylesheets/fa.sass');
 
 'use strict'
 
@@ -16,12 +17,12 @@ var TodoList = React.createClass({
   },
   render: function() {
     var createTask = function(task, taskIndex) {
-      return <li><i className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></i> {task} <i className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></i></li>;
+      return <li><i className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></i>{task}<i className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></i></li>;
     };
     return (
       <ul>
         {this.props.data.map((task, taskIndex) =>
-          <li key={taskIndex}><i className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></i> {task} <i className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></i></li>
+          <li key={taskIndex}><i className="fa fa-check" onClick={this.handleComplete}value={taskIndex}></i>{task} <i className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></i></li>
         )}
       </ul>
     );
@@ -31,7 +32,7 @@ var TodoList = React.createClass({
 var CompletedList = React.createClass({
   render: function() {
     return (
-        <ul>
+        <ul className="completed">
         {this.props.completed.reverse().map((task, taskIndex) =>
           <li key={taskIndex}>{task}</li>
         )}
