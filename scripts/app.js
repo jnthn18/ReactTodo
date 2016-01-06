@@ -13,12 +13,12 @@ var TodoList = React.createClass({
   },
   render: function() {
     var createTask = function(task, taskIndex) {
-      return <li><i className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></i>{task}</li>;
+      return <li><button className="fa fa-check" onClick={this.Complete}></button>{task}</li>;
     };
     return (
       <ul>
         {this.props.data.map((task, taskIndex) =>
-          <li key={taskIndex}><i className="fa fa-check" onClick={this.handleComplete}value={taskIndex}></i>{task}</li>
+          <li key={taskIndex}><button className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></button>{task}</li>
         )}
       </ul>
     );
@@ -34,7 +34,7 @@ var CompletedList = React.createClass({
     return (
         <ul className="completed">
         {this.props.completed.reverse().map((task, taskIndex) =>
-          <li key={taskIndex}><i className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></i>{task}</li>
+          <li key={taskIndex}><button className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></button>{task}</li>
         )}
       </ul>
     );
@@ -61,8 +61,7 @@ var TodoForm = React.createClass({
   render: function() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input onChange={this.onChange} value={this.state.text} />
-        <button>'Add Task'</button>
+        <input onChange={this.onChange} value={this.state.text} placeholder="Add Task" />
       </form>
     );
   }

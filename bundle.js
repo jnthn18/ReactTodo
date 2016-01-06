@@ -68,7 +68,7 @@
 	      return React.createElement(
 	        'li',
 	        null,
-	        React.createElement('i', { className: 'fa fa-check', onClick: this.handleComplete, value: taskIndex }),
+	        React.createElement('button', { className: 'fa fa-check', onClick: this.Complete }),
 	        task
 	      );
 	    };
@@ -79,7 +79,7 @@
 	        return React.createElement(
 	          'li',
 	          { key: taskIndex },
-	          React.createElement('i', { className: 'fa fa-check', onClick: _this.handleComplete, value: taskIndex }),
+	          React.createElement('button', { className: 'fa fa-check', onClick: _this.handleComplete, value: taskIndex }),
 	          task
 	        );
 	      })
@@ -104,7 +104,7 @@
 	        return React.createElement(
 	          'li',
 	          { key: taskIndex },
-	          React.createElement('i', { className: 'fa fa-times', onClick: _this2.handleDelete, value: taskIndex }),
+	          React.createElement('button', { className: 'fa fa-times', onClick: _this2.handleDelete, value: taskIndex }),
 	          task
 	        );
 	      })
@@ -135,12 +135,7 @@
 	    return React.createElement(
 	      'form',
 	      { onSubmit: this.handleSubmit },
-	      React.createElement('input', { onChange: this.onChange, value: this.state.text }),
-	      React.createElement(
-	        'button',
-	        null,
-	        '\'Add Task\''
-	      )
+	      React.createElement('input', { onChange: this.onChange, value: this.state.text, placeholder: 'Add Task' })
 	    );
 	  }
 	});
@@ -226,7 +221,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto';\n  text-align: center; }\n\nh1 {\n  font-family: 'Lobster';\n  color: #E41B17; }\n\nul {\n  list-style-type: none;\n  padding-left: 0;\n  width: 80%;\n  margin: auto;\n  margin-bottom: 16px; }\n\nul.completed li {\n  text-decoration: line-through;\n  color: #bdc3c7; }\n\nli {\n  text-align: left;\n  height: 34px;\n  line-height: 34px;\n  font-size: 1.4em; }\n\n#container {\n  width: 320px;\n  margin: auto;\n  margin-top: 50px; }\n", ""]);
+	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto';\n  text-align: center; }\n\nh1 {\n  font-family: 'Lobster';\n  color: #E41B17; }\n\nul {\n  list-style-type: none;\n  padding-left: 0;\n  width: 80%;\n  margin: auto;\n  margin-bottom: 16px; }\n\nul.completed li {\n  text-decoration: line-through;\n  color: #bdc3c7; }\n\nli {\n  text-align: left;\n  height: 34px;\n  line-height: 34px;\n  font-size: 1.4em;\n  margin-bottom: 16px; }\n\n#container {\n  width: 320px;\n  margin: auto;\n  margin-top: 50px; }\n\nbutton {\n  background: none;\n  border: none;\n  height: inherit;\n  font-size: inherit; }\n\nbutton:focus {\n  outline: 0; }\n", ""]);
 
 	// exports
 
@@ -576,7 +571,7 @@
 
 
 	// module
-	exports.push([module.id, ".fa {\n  line-height: 34px; }\n\n.fa-check {\n  padding-right: 16px;\n  color: #54C571; }\n\n.fa-times {\n  padding-right: 16px; }\n", ""]);
+	exports.push([module.id, ".fa {\n  line-height: 34px; }\n\n.fa-check {\n  padding-right: 24px;\n  color: #54C571; }\n\n.fa-times {\n  padding-right: 24px;\n  color: #bdc3c7; }\n", ""]);
 
 	// exports
 
