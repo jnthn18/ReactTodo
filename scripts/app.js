@@ -7,22 +7,18 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var TodoList = React.createClass({
-  handleDelete: function(e){
-    var taskIndex = parseInt(e.target.value, 10);
-    this.props.onDeleteTask(taskIndex);
-  },
   handleComplete: function(e){
     var taskIndex = parseInt(e.target.value, 10);
     this.props.onCompleteTask(taskIndex);
   },
   render: function() {
     var createTask = function(task, taskIndex) {
-      return <li><i className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></i>{task}<i className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></i></li>;
+      return <li><i className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></i>{task}</li>;
     };
     return (
       <ul>
         {this.props.data.map((task, taskIndex) =>
-          <li key={taskIndex}><i className="fa fa-check" onClick={this.handleComplete}value={taskIndex}></i>{task} <i className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></i></li>
+          <li key={taskIndex}><i className="fa fa-check" onClick={this.handleComplete}value={taskIndex}></i>{task}</li>
         )}
       </ul>
     );
@@ -30,11 +26,15 @@ var TodoList = React.createClass({
 });
 
 var CompletedList = React.createClass({
+  handleDelete: function(e){
+    var taskIndex = parseInt(e.target.value, 10);
+    this.props.onDeleteTask(taskIndex);
+  },
   render: function() {
     return (
         <ul className="completed">
         {this.props.completed.reverse().map((task, taskIndex) =>
-          <li key={taskIndex}>{task}</li>
+          <li key={taskIndex}><i className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></i>{task}</li>
         )}
       </ul>
     );
@@ -78,10 +78,10 @@ var App = React.createClass({
     this.setState({data: nextTask});
   },
   deleteTask: function(task) {
-    var tasks = this.state.data;
+    var tasks = this.state.completed;
     var removedTasks = tasks.splice(task, 1);
     console.log('Removed Task: '+removedTasks);
-    this.setState({data: tasks});
+    this.setState({completed: tasks});
   },
   completeTask: function(task) {
     var tasks = this.state.data;
@@ -93,10 +93,10 @@ var App = React.createClass({
     return (
       <div>
         <h1>TODO LIST</h1>
-        <TodoList data={this.state.data} onCompleteTask={this.completeTask} onDeleteTask={this.deleteTask} />
+        <TodoList data={this.state.data} onCompleteTask={this.completeTask} />
         <TodoForm  onTaskSubmit={this.handleTaskSubmit} />
         <h2>Completed Tasks</h2>
-        <CompletedList completed={this.state.completed} />
+        <CompletedList completed={this.state.completed} onDeleteTask={this.deleteTask} />
       </div>
     );
   }
