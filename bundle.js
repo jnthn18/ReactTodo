@@ -47,7 +47,9 @@
 	'use strict';
 
 	__webpack_require__(1);
-	__webpack_require__(5);
+	__webpack_require__(165);
+	__webpack_require__(167);
+	__webpack_require__(169);
 
 	'use strict';
 
@@ -222,7 +224,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto';\n  text-align: center; }\n\nh1, h2 {\n  font-family: 'Lobster';\n  color: #E41B17;\n  text-decoration: underline; }\n\nul {\n  list-style-type: none;\n  padding-left: 0;\n  margin: auto;\n  margin-bottom: 16px; }\n\nul.completed li {\n  text-decoration: line-through;\n  color: #bdc3c7; }\n\nli {\n  text-align: left;\n  height: 34px;\n  line-height: 34px;\n  font-size: 1.4em;\n  margin-bottom: 16px; }\n\n#container {\n  width: 320px;\n  margin: auto;\n  margin-top: 50px; }\n\nbutton {\n  background: none;\n  border: none;\n  height: inherit;\n  font-size: inherit; }\n\nbutton:focus, input:focus {\n  outline: 0; }\n\ninput {\n  background: none;\n  border: none;\n  border-bottom: 1px solid #333;\n  width: 100%;\n  height: 24px;\n  margin-bottom: 16px;\n  font-size: 1.4em;\n  font-family: 'Roboto'; }\n\ninput:focus {\n  border-bottom: 2px solid #333; }\n", ""]);
+	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto';\n  text-align: center; }\n\nh1, h2 {\n  font-family: 'Lobster';\n  color: #E41B17;\n  text-decoration: underline; }\n\nbutton {\n  background: none;\n  border: none;\n  height: inherit;\n  font-size: inherit; }\n\nbutton:focus, input:focus {\n  outline: 0; }\n\n#container {\n  width: 320px;\n  margin: auto;\n  margin-top: 50px; }\n\n.fa {\n  line-height: 34px; }\n", ""]);
 
 	// exports
 
@@ -538,46 +540,8 @@
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(6);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js?indentedSyntax!./fa.sass", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js?indentedSyntax!./fa.sass");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(3)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".fa {\n  line-height: 34px; }\n\n.fa-check {\n  padding-right: 24px;\n  color: #54C571; }\n\n.fa-times {\n  padding-right: 24px;\n  color: #bdc3c7; }\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 5 */,
+/* 6 */,
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -20164,6 +20128,126 @@
 	'use strict';
 
 	module.exports = __webpack_require__(9);
+
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(166);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js?indentedSyntax!./completed.sass", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js?indentedSyntax!./completed.sass");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "ul.completed li {\n  text-decoration: line-through;\n  color: #BDC3C7; }\n\n.fa-times {\n  padding-right: 24px;\n  color: #BDC3C7; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(168);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js?indentedSyntax!./todolist.sass", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js?indentedSyntax!./todolist.sass");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "ul {\n  list-style-type: none;\n  padding-left: 0;\n  margin: auto;\n  margin-bottom: 16px; }\n\nli {\n  text-align: left;\n  height: 34px;\n  line-height: 34px;\n  font-size: 1.4em;\n  margin-bottom: 16px; }\n\n.fa-check {\n  padding-right: 24px;\n  color: #54C571; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(170);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js?indentedSyntax!./todoform.sass", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js?indentedSyntax!./todoform.sass");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "input {\n  background: none;\n  border: none;\n  border-bottom: 1px solid #333;\n  width: 100%;\n  height: 24px;\n  margin-bottom: 16px;\n  font-size: 1.4em;\n  font-family: 'Roboto'; }\n\ninput:focus {\n  border-bottom: 2px solid #333; }\n", ""]);
+
+	// exports
 
 
 /***/ }

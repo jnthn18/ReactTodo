@@ -1,5 +1,7 @@
 require('./../stylesheets/global.sass');
-require('./../stylesheets/fa.sass');
+require('./../stylesheets/completed.sass');
+require('./../stylesheets/todolist.sass');
+require('./../stylesheets/todoform.sass');
 
 'use strict'
 
