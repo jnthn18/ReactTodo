@@ -61,7 +61,7 @@ var TodoForm = React.createClass({
   render: function() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input onChange={this.onChange} value={this.state.text} placeholder="Add Task" />
+        <input onChange={this.onChange} value={this.state.text} placeholder="What do you want to do?" />
       </form>
     );
   }
@@ -92,9 +92,9 @@ var App = React.createClass({
     return (
       <div>
         <h1>TODO LIST</h1>
-        <TodoList data={this.state.data} onCompleteTask={this.completeTask} />
         <TodoForm  onTaskSubmit={this.handleTaskSubmit} />
-        <h2>Completed Tasks</h2>
+        <TodoList data={this.state.data} onCompleteTask={this.completeTask} />
+        <h2>COMPLETED TASKS</h2>
         <CompletedList completed={this.state.completed} onDeleteTask={this.deleteTask} />
       </div>
     );

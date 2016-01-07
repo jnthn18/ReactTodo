@@ -135,7 +135,7 @@
 	    return React.createElement(
 	      'form',
 	      { onSubmit: this.handleSubmit },
-	      React.createElement('input', { onChange: this.onChange, value: this.state.text, placeholder: 'Add Task' })
+	      React.createElement('input', { onChange: this.onChange, value: this.state.text, placeholder: 'What do you want to do?' })
 	    );
 	  }
 	});
@@ -172,12 +172,12 @@
 	        null,
 	        'TODO LIST'
 	      ),
-	      React.createElement(TodoList, { data: this.state.data, onCompleteTask: this.completeTask }),
 	      React.createElement(TodoForm, { onTaskSubmit: this.handleTaskSubmit }),
+	      React.createElement(TodoList, { data: this.state.data, onCompleteTask: this.completeTask }),
 	      React.createElement(
 	        'h2',
 	        null,
-	        'Completed Tasks'
+	        'COMPLETED TASKS'
 	      ),
 	      React.createElement(CompletedList, { completed: this.state.completed, onDeleteTask: this.deleteTask })
 	    );
@@ -221,7 +221,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto';\n  text-align: center; }\n\nh1 {\n  font-family: 'Lobster';\n  color: #E41B17; }\n\nul {\n  list-style-type: none;\n  padding-left: 0;\n  width: 80%;\n  margin: auto;\n  margin-bottom: 16px; }\n\nul.completed li {\n  text-decoration: line-through;\n  color: #bdc3c7; }\n\nli {\n  text-align: left;\n  height: 34px;\n  line-height: 34px;\n  font-size: 1.4em;\n  margin-bottom: 16px; }\n\n#container {\n  width: 320px;\n  margin: auto;\n  margin-top: 50px; }\n\nbutton {\n  background: none;\n  border: none;\n  height: inherit;\n  font-size: inherit; }\n\nbutton:focus {\n  outline: 0; }\n", ""]);
+	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto';\n  text-align: center; }\n\nh1, h2 {\n  font-family: 'Lobster';\n  color: #E41B17;\n  text-decoration: underline; }\n\nul {\n  list-style-type: none;\n  padding-left: 0;\n  margin: auto;\n  margin-bottom: 16px; }\n\nul.completed li {\n  text-decoration: line-through;\n  color: #bdc3c7; }\n\nli {\n  text-align: left;\n  height: 34px;\n  line-height: 34px;\n  font-size: 1.4em;\n  margin-bottom: 16px; }\n\n#container {\n  width: 320px;\n  margin: auto;\n  margin-top: 50px; }\n\nbutton {\n  background: none;\n  border: none;\n  height: inherit;\n  font-size: inherit; }\n\nbutton:focus, input:focus {\n  outline: 0; }\n\ninput {\n  background: none;\n  border: none;\n  border-bottom: 1px solid #333;\n  width: 100%;\n  height: 24px;\n  margin-bottom: 16px;\n  font-size: 1.4em;\n  font-family: 'Roboto'; }\n\ninput:focus {\n  border-bottom: 2px solid #333; }\n", ""]);
 
 	// exports
 
