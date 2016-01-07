@@ -177,7 +177,8 @@
 	      React.createElement(
 	        'h2',
 	        null,
-	        'COMPLETED TASKS'
+	        this.state.completed.length,
+	        ' COMPLETED TASKS'
 	      ),
 	      React.createElement(CompletedList, { completed: this.state.completed, onDeleteTask: this.deleteTask })
 	    );

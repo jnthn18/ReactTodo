@@ -94,7 +94,7 @@ var App = React.createClass({
         <h1>TODO LIST</h1>
         <TodoForm  onTaskSubmit={this.handleTaskSubmit} />
         <TodoList data={this.state.data} onCompleteTask={this.completeTask} />
-        <h2>COMPLETED TASKS</h2>
+        <h2>{this.state.completed.length} COMPLETED TASKS</h2>
         <CompletedList completed={this.state.completed} onDeleteTask={this.deleteTask} />
       </div>
     );
