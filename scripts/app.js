@@ -14,13 +14,10 @@ var TodoList = React.createClass({
     this.props.onCompleteTask(taskIndex);
   },
   render: function() {
-    var createTask = function(task, taskIndex) {
-      return <li><button className="fa fa-check" onClick={this.Complete}></button>{task}</li>;
-    };
     return (
       <ul>
         {this.props.data.map((task, taskIndex) =>
-          <li key={taskIndex}><button className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></button>{task}</li>
+          <li key={taskIndex}><button className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></button><span>{task}</span></li>
         )}
       </ul>
     );

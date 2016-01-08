@@ -66,14 +66,6 @@
 	  render: function render() {
 	    var _this = this;
 
-	    var createTask = function createTask(task, taskIndex) {
-	      return React.createElement(
-	        'li',
-	        null,
-	        React.createElement('button', { className: 'fa fa-check', onClick: this.Complete }),
-	        task
-	      );
-	    };
 	    return React.createElement(
 	      'ul',
 	      null,
@@ -82,7 +74,11 @@
 	          'li',
 	          { key: taskIndex },
 	          React.createElement('button', { className: 'fa fa-check', onClick: _this.handleComplete, value: taskIndex }),
-	          task
+	          React.createElement(
+	            'span',
+	            null,
+	            task
+	          )
 	        );
 	      })
 	    );
