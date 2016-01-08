@@ -73,12 +73,12 @@
 	        return React.createElement(
 	          'li',
 	          { key: taskIndex },
-	          React.createElement('button', { className: 'fa fa-check', onClick: _this.handleComplete, value: taskIndex }),
 	          React.createElement(
 	            'span',
 	            null,
-	            task
-	          )
+	            React.createElement('button', { className: 'fa fa-check', onClick: _this.handleComplete, value: taskIndex })
+	          ),
+	          task
 	        );
 	      })
 	    );
@@ -102,7 +102,11 @@
 	        return React.createElement(
 	          'li',
 	          { key: taskIndex },
-	          React.createElement('button', { className: 'fa fa-times', onClick: _this2.handleDelete, value: taskIndex }),
+	          React.createElement(
+	            'span',
+	            null,
+	            React.createElement('button', { className: 'fa fa-times', onClick: _this2.handleDelete, value: taskIndex })
+	          ),
 	          task
 	        );
 	      })
@@ -236,7 +240,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto';\n  text-align: center; }\n\nh1, h2 {\n  font-family: 'Lobster';\n  color: #E41B17;\n  text-decoration: underline; }\n\nbutton {\n  background: none;\n  border: none;\n  height: inherit;\n  font-size: inherit; }\n\nbutton:focus, input:focus {\n  outline: 0; }\n\n#container {\n  width: 320px;\n  margin: auto;\n  margin-top: 50px; }\n\n.fa {\n  line-height: 34px; }\n", ""]);
+	exports.push([module.id, "body {\n  background-color: #f8f8f8;\n  color: #333;\n  font-family: 'Roboto';\n  text-align: center; }\n\nh1, h2 {\n  font-family: 'Lobster';\n  color: #E41B17;\n  border-bottom: 2px solid #E41B17; }\n\nbutton {\n  background: none;\n  border: none;\n  height: inherit;\n  font-size: inherit; }\n\nbutton:focus, input:focus {\n  outline: 0; }\n\n#container {\n  width: 320px;\n  margin: auto;\n  margin-top: 50px; }\n\n.fa {\n  line-height: 34px; }\n", ""]);
 
 	// exports
 
@@ -626,7 +630,7 @@
 
 
 	// module
-	exports.push([module.id, "ul {\n  list-style-type: none;\n  padding-left: 0;\n  margin: auto;\n  margin-bottom: 16px; }\n\nli {\n  text-align: left;\n  height: 34px;\n  line-height: 34px;\n  font-size: 1.4em;\n  margin-bottom: 16px; }\n\n.fa-check {\n  padding-right: 24px;\n  color: #54C571; }\n", ""]);
+	exports.push([module.id, "ul {\n  list-style-type: none;\n  padding-left: 0;\n  margin: auto;\n  margin-bottom: 16px; }\n\nli {\n  text-align: left;\n  min-height: 34px;\n  line-height: 34px;\n  font-size: 1.4em;\n  margin-bottom: 16px;\n  display: flex; }\n\nli span {\n  max-width: 272px; }\n\n.fa-check {\n  padding-right: 24px;\n  color: #54C571; }\n", ""]);
 
 	// exports
 

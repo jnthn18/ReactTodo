@@ -17,7 +17,7 @@ var TodoList = React.createClass({
     return (
       <ul>
         {this.props.data.map((task, taskIndex) =>
-          <li key={taskIndex}><button className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></button><span>{task}</span></li>
+          <li key={taskIndex}><span><button className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></button></span>{task}</li>
         )}
       </ul>
     );
@@ -33,7 +33,7 @@ var CompletedList = React.createClass({
     return (
         <ul className="completed">
         {this.props.completed.reverse().map((task, taskIndex) =>
-          <li key={taskIndex}><button className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></button>{task}</li>
+          <li key={taskIndex}><span><button className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></button></span>{task}</li>
         )}
       </ul>
     );
