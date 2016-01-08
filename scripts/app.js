@@ -1,70 +1,12 @@
 require('./../stylesheets/global.sass');
-require('./../stylesheets/completed.sass');
-require('./../stylesheets/todolist.sass');
-require('./../stylesheets/todoform.sass');
 
 'use strict'
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-var TodoList = React.createClass({
-  handleComplete: function(e){
-    var taskIndex = parseInt(e.target.value, 10);
-    this.props.onCompleteTask(taskIndex);
-  },
-  render: function() {
-    return (
-      <ul>
-        {this.props.data.map((task, taskIndex) =>
-          <li key={taskIndex}><span><button className="fa fa-check" onClick={this.handleComplete} value={taskIndex}></button></span>{task}</li>
-        )}
-      </ul>
-    );
-  }
-});
-
-var CompletedList = React.createClass({
-  handleDelete: function(e){
-    var taskIndex = parseInt(e.target.value, 10);
-    this.props.onDeleteTask(taskIndex);
-  },
-  render: function() {
-    return (
-        <ul className="completed">
-        {this.props.completed.reverse().map((task, taskIndex) =>
-          <li key={taskIndex}><span><button className="fa fa-times" onClick={this.handleDelete} value={taskIndex}></button></span>{task}</li>
-        )}
-      </ul>
-    );
-  }
-});
-
-var TodoForm = React.createClass({
-  getInitialState: function() {
-    return {text: ''};
-  },
-  onChange: function(e){
-    this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var text = this.state.text.trim();
-    if (!text){
-      console.log("please enter a task");
-      return;
-    }
-    this.props.onTaskSubmit(text);
-    this.setState({text: ''});
-  },
-  render: function() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input onChange={this.onChange} value={this.state.text} placeholder="What do you want to do?" />
-      </form>
-    );
-  }
-});
+var TodoForm = require('./components/TodoForm');
+var CompletedList = require('./components/CompletedList');
+var TodoList = require('./components/TodoList');
 
 var App = React.createClass({
   getInitialState: function() {
